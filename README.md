@@ -1,0 +1,1 @@
+# MagicMirror-AirQuality-Module
