@@ -1,6 +1,6 @@
 # MagicMirror-AirQuality-Module
 
-| [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror) | [Air Quality Index](http://aqicn.org/here/) |
+[MagicMirror Project on Github](https://github.com/MichMich/MagicMirror) | [Air Quality Index](http://aqicn.org/here/)
 
 ### Configuration
 
