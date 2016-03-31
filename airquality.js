@@ -1,18 +1,23 @@
 Module.create({
 	// Default module config.
 	defaults: {
+		lang: '',
 		location: '',
-        	updateInterval: 30 * 60 * 1000, // every 30 minutes
-        	animationSpeed: 1000
+		updateInterval: 30 * 60 * 1000, // every 30 minutes
+		animationSpeed: 1000
 	},
 	start: function(){
 		Log.info('Starting module: ' + this.name);
+		// load data
+		this.load();
+		// schedule refresh
 		setInterval(
 			this.load.bind(this),
 			this.config.updateInterval);
 	},
 	load: function(){
 		_aqiFeed({
+			lang: this.config.lang,
 			city: this.config.location,
 			callback: this.render.bind(this)
 		});
@@ -20,24 +25,9 @@ Module.create({
 	render: function(data){
 		var aqiValue = $(data.aqit).find("span").text();
 		this.text = '<div class="xsmall">'+data.cityname+'</div>'
-			+'<div>'+this.toText(aqiValue)+' ('+aqiValue+')</div>';
+			+'<div>'+data.impact+' ('+aqiValue+')</div>';
 		this.loaded = true;
 		this.updateDom(this.animationSpeed);
-	},
-	toText: function(value){
-		if(value > 300){
-			return 'Severely Polluted';
-		}else if(value > 200){
-			return 'Heavily Polluted';
-		}else if(value > 150){
-			return 'Moderately Polluted';
-		}else if(value > 100){
-			return 'Lightly Polluted';
-		}else if(value > 50){
-			return 'Good';
-		}else{
-			return 'Excellent';
-		}
 	},
 	html: {
 		city: '<div class="xsmall">{0}</div>',
