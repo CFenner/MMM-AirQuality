@@ -1,17 +1,33 @@
 Module.create({
 	// Default module config.
 	defaults: {
+		location: '',
+        updateInterval: 30 * 60 * 1000, // every 10 minutes
         animationSpeed: 1000
 	},
 	start: function(){
-		_aqiFeed({ city:"Beijing", callback:
+		var payload = {
+			city: this.config.location,
+			callback: this.render.bind(this)
+		};
+		
+		_aqiFeed(payload);
+		/*{ city:"Beijing", callback:
 			function(aqi){ 
 				var aqiValue = $(aqi.aqit).find("span").text();
-				this.text = '<div class="xsmall">'+aqi.cityname+'</div>'+'<div>'+this.toText(aqiValue)+' ('+aqiValue+')</div>';
+				this.text = '<div class="xsmall">'+aqi.cityname+'</div>'
+				+'<div>'+this.toText(aqiValue)+' ('+aqiValue+')</div>';
 				this.loaded = true;
 				this.updateDom(this.animationSpeed);
 			}.bind(this)
-		});
+		});*/
+	},
+	render: function(data){
+		var aqiValue = $(data.aqit).find("span").text();
+		this.text = '<div class="xsmall">'+data.cityname+'</div>'
+			+'<div>'+this.toText(aqiValue)+' ('+aqiValue+')</div>';
+		this.loaded = true;
+		this.updateDom(this.animationSpeed);
 	},
 	toText: function(value){
 		if(value > 300){
@@ -28,6 +44,10 @@ Module.create({
 			return 'Excellent';
 		}
 	},
+	html: {
+		city: '<div class="xsmall">{0}</div>',
+		aqi: '<div>{0} ({1})</div>'
+	},
 	getScripts: function() {
 		return [
 			'aqiFeed.js',
@@ -40,8 +60,14 @@ Module.create({
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
+		if (this.config.location === '') {
+			wrapper.innerHTML = "Please set the air quality index <i>location</i> in the config for module: " + this.name + ".";
+			wrapper.className = "dimmed light small";
+			return wrapper;
+		}
 		if (!this.loaded) {
-			wrapper.innerHTML = '<div class="dimmed light small">Loading air quality index ...</div>'; 
+			wrapper.innerHTML = "Loading air quality index ...";
+			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
 		wrapper.innerHTML = this.text;  
