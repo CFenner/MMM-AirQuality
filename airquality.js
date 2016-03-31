@@ -24,8 +24,9 @@ Module.create({
 	},
 	render: function(data){
 		var aqiValue = $(data.aqit).find("span").text();
-		this.text = '<div class="xsmall">'+data.cityname+'</div>'
-			+'<div>'+data.impact+' ('+aqiValue+')</div>';
+		this.text = '';
+		this.text += '<div><i class="fa fa-leaf"></i> '+data.impact+' ('+aqiValue+')</div>';
+		this.text += '<div class="xsmall">'+data.cityname+'</div>';
 		this.loaded = true;
 		this.updateDom(this.animationSpeed);
 	},
@@ -40,7 +41,7 @@ Module.create({
 		];
 	},
 	getStyles: function() {
-		return [];
+		return ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'];
 	},
 	// Override dom generator.
 	getDom: function() {
