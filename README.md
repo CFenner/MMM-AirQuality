@@ -6,7 +6,7 @@
 
 ## Usage 
 
-To use this module, create a new folder `airQuality` in the *modules* subfolder of your mirror and copy the content of this repository this this folder. 
+To use this module, create a new folder `airquality` in the *modules* subfolder of your mirror and copy the content of this repository this this folder. 
 
 ### Configuration
 
