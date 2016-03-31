@@ -2,25 +2,20 @@ Module.create({
 	// Default module config.
 	defaults: {
 		location: '',
-        updateInterval: 30 * 60 * 1000, // every 10 minutes
-        animationSpeed: 1000
+        	updateInterval: 30 * 60 * 1000, // every 30 minutes
+        	animationSpeed: 1000
 	},
 	start: function(){
-		var payload = {
+		Log.info('Starting module: ' + this.name);
+		setInterval(
+			this.load.bind(this),
+			this.config.updateInterval);
+	},
+	load: function(){
+		_aqiFeed({
 			city: this.config.location,
 			callback: this.render.bind(this)
-		};
-		
-		_aqiFeed(payload);
-		/*{ city:"Beijing", callback:
-			function(aqi){ 
-				var aqiValue = $(aqi.aqit).find("span").text();
-				this.text = '<div class="xsmall">'+aqi.cityname+'</div>'
-				+'<div>'+this.toText(aqiValue)+' ('+aqiValue+')</div>';
-				this.loaded = true;
-				this.updateDom(this.animationSpeed);
-			}.bind(this)
-		});*/
+		});
 	},
 	render: function(data){
 		var aqiValue = $(data.aqit).find("span").text();
