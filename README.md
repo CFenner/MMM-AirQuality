@@ -1,5 +1,6 @@
 # MagicMirror-AirQuality-Module
 
+| [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror) | [Air Quality Index](http://aqicn.org/here/) |
 
 ### Configuration
 
@@ -14,3 +15,7 @@ To run the module properly, you need to add the following data to your config.js
 	}
 }
 ```
+
+### Known Issues
+
+There is a bug in the skript that prevent some locations from being displayed.
