@@ -24,11 +24,15 @@ To run the module, you need to add the following data to your config.js file.
 
 You may want to set the following options in the config section as well:
 
-- use `lang` to change the language (default: en)
-- use `updateInterval` to change the refresh interval (default: 30 * 60 * 1000 | 30 minutes)
+| Option |  Description | 
+|---|---|
+| `lang` | change the language <br> *default: en*  | 
+| `updateInterval` | change the refresh interval <br> *default: 30 * 60 * 1000 (30 minutes)*  | 
 
 ### Known Issues
 
 Due to the AQI rendering script it is not possible to have multiple instances of this module running.
 
 There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim'). 
+
+Not all languages may be supported (see: http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/).
