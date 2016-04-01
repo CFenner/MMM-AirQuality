@@ -3,6 +3,7 @@ Module.create({
 	defaults: {
 		lang: '',
 		location: '',
+		showLocation: true,
 		updateInterval: 30, // every 30 minutes
 		animationSpeed: 1000
 	},
@@ -62,7 +63,7 @@ Module.create({
 				this.html.icon,
 				this.data.impact,
 				this.data.value)+
-			this.html.city.format(this.data.city);
+			(this.config.showLocation?this.html.city.format(this.data.city):'');
 		return wrapper;
 	}
 });
