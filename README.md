@@ -26,8 +26,8 @@ You may want to set the following options in the config section as well:
 
 | Option |  Description | 
 |---|---|
-| `lang` | change the language <br> *default: en*  | 
-| `updateInterval` | change the refresh interval <br> *default: 30 * 60 * 1000 (30 minutes)*  | 
+| `lang` | change the language <br><br> **Optional** \| **Default**: en | 
+| `updateInterval` |  change the update period <br><br> **Optional** \| **Default**: 30 * 60 * 1000 (30 minutes) | 
 
 ### Known Issues
 
