@@ -23,21 +23,22 @@ Module.create({
 		});
 	},
 	render: function(data){
-		var aqiValue = $(data.aqit).find("span").text();
-		this.text = '';
-		this.text += '<div><i class="fa fa-leaf"></i> '+data.impact+' ('+aqiValue+')</div>';
-		this.text += '<div class="xsmall">'+data.cityname+'</div>';
+		this.data.value = $(data.aqit).find("span").text();
+		this.data.impact = data.impact;
+		this.data.city = data.cityname;
 		this.loaded = true;
 		this.updateDom(this.animationSpeed);
 	},
 	html: {
+		icon: '<i class="fa fa-leaf"></i>',
 		city: '<div class="xsmall">{0}</div>',
-		aqi: '<div>{0} ({1})</div>'
+		quality: '<div>{0} {1} ({2})</div>'
 	},
 	getScripts: function() {
 		return [
 			'aqiFeed.js',
-			'//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js'
+			'//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js',
+			'String.format.js'
 		];
 	},
 	getStyles: function() {
@@ -56,8 +57,12 @@ Module.create({
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-		wrapper.innerHTML = this.text;  
-
+		wrapper.innerHTML = 
+			this.html.quality.format(
+				this.html.icon,
+				this.data.impact,
+				this.data.value)+
+			this.html.city.format(this.data.city);
 		return wrapper;
 	}
 });
