@@ -1,4 +1,10 @@
-Module.register('airquality', 
+/* Magic Mirror
+ * Module: AirQuality
+ *
+ * By Christopher Fenner http://github.com/CFenner
+ * MIT Licensed.
+ */
+ Module.register('airquality', 
 	// Default module config.
 	defaults: {
 		lang: '',
