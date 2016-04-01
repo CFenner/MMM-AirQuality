@@ -3,7 +3,7 @@ Module.create({
 	defaults: {
 		lang: '',
 		location: '',
-		updateInterval: 30 * 60 * 1000, // every 30 minutes
+		updateInterval: 30, // every 30 minutes
 		animationSpeed: 1000
 	},
 	start: function(){
@@ -13,7 +13,7 @@ Module.create({
 		// schedule refresh
 		setInterval(
 			this.load.bind(this),
-			this.config.updateInterval);
+			this.config.updateInterval * 60 * 1000);
 	},
 	load: function(){
 		_aqiFeed({
