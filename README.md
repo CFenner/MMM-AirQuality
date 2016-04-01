@@ -28,7 +28,8 @@ You may want to set the following options in the config section as well:
 |---|---|
 | `lang` | change the language <br><br> **Optional** \| **Default**: en | 
 | `updateInterval` |  change the update period in minutes<br><br> **Optional** \| **Default**: 30 (minutes) | 
-| `showLocation` | toggle location printing<br><br> **Optional** \| **Default**: true | 
+| `showLocation` | toggle location printing<br><br> **Optional** \| **Default**: true |
+| `showIndex` | toggle index printing<br><br> **Optional** \| **Default**: true | 
 
 ### Known Issues
 

@@ -4,6 +4,7 @@ Module.create({
 		lang: '',
 		location: '',
 		showLocation: true,
+		showIndex: true,
 		updateInterval: 30, // every 30 minutes
 		animationSpeed: 1000
 	},
@@ -33,7 +34,7 @@ Module.create({
 	html: {
 		icon: '<i class="fa fa-leaf"></i>',
 		city: '<div class="xsmall">{0}</div>',
-		quality: '<div>{0} {1} ({2})</div>'
+		quality: '<div>{0} {1}{2}</div>'
 	},
 	getScripts: function() {
 		return [
@@ -62,7 +63,7 @@ Module.create({
 			this.html.quality.format(
 				this.html.icon,
 				this.data.impact,
-				this.data.value)+
+				(this.config.showIndex?' ('+this.data.value+')':''))+
 			(this.config.showLocation?this.html.city.format(this.data.city):'');
 		return wrapper;
 	}
