@@ -1,4 +1,4 @@
-Module.register('airquality', 
+Module.register('airquality', {
 	// Default module config.
 	defaults: {
 		lang: '',
