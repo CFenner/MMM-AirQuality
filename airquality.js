@@ -4,7 +4,7 @@
  * By Christopher Fenner http://github.com/CFenner
  * MIT Licensed.
  */
- Module.register('airquality', 
+Module.register('airquality', {
 	// Default module config.
 	defaults: {
 		lang: '',

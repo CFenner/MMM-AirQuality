@@ -26,10 +26,11 @@ You may want to set the following options in the config section as well:
 
 | Option |  Description | 
 |---|---|
-| `lang` | change the language <br><br> **Optional** \| **Default**: en | 
-| `updateInterval` |  change the update period in minutes<br><br> **Optional** \| **Default**: 30 (minutes) | 
-| `showLocation` | toggle location printing<br><br> **Optional** \| **Default**: true |
-| `showIndex` | toggle index printing<br><br> **Optional** \| **Default**: true | 
+| `location` | The location for that you you want to show the air quality.<br><br>This is **REQUIRED**.| 
+| `lang` | change the language<br><br>This is **OPTIONAL**.<br>**Default value:** `en` | 
+| `updateInterval` |  change the update period in minutes<br><br>This is **OPTIONAL**.<br>**Default value:** `30` (minutes) | 
+| `showLocation` | toggle location printing<br><br>This is **OPTIONAL**.<br>**Default value:**`true` |
+| `showIndex` | toggle index printing<br><br>This is **OPTIONAL**.<br>**Default value:**`true` | 
 
 ### Known Issues
 
