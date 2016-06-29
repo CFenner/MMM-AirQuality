@@ -17,9 +17,15 @@ To run the module, you need to add the following data to your config.js file.
 	module: 'airquality',
 	position: 'top_center', // you may choose any location
 	config: {
-	  location: 'Beijing' // the location to check the index for
+	  location: 'beijing' // the location to check the index for
 	}
 }
+```
+### Location
+Use the part behind http://aqicn.org/city/ for your location.
+For example http://aqicn.org/city/netherland/utrecht/griftpark/ would be:
+```
+	location: 'netherland/utrecht/griftpark/'
 ```
 
 You may want to set the following options in the config section as well:
