@@ -34,11 +34,12 @@ To run the module, you need to add the following data to your config.js file.
 	}
 }
 ```
+
 ### Location
 Use the part behind http://aqicn.org/city/ for your location.
 For example http://aqicn.org/city/netherland/utrecht/griftpark/ would be:
 ```
-	location: 'netherland/utrecht/griftpark/'
+location: 'netherland/utrecht/griftpark/'
 ```
 
 You may want to set the following options in the config section as well:
