@@ -6,7 +6,20 @@
 
 ## Usage 
 
-To use this module, create a new folder `airquality` in the *modules* subfolder of your mirror and copy the content of this repository this this folder. 
+You need to install the module for your MagicMirror.
+
+### Installation
+
+Navigate into your MagicMirror's modules folder:
+
+```shell
+cd ~/MagicMirror/modules
+```
+Clone this repository:
+```shell
+git clone https://github.com/CFenner/MMM-AirQuality
+```
+Configure the module in your config.js file.
 
 ### Configuration
 
@@ -14,7 +27,7 @@ To run the module, you need to add the following data to your config.js file.
 
 ```
 {
-	module: 'airquality',
+	module: 'MMM-AirQuality',
 	position: 'top_center', // you may choose any location
 	config: {
 	  location: 'beijing' // the location to check the index for
