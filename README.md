@@ -1,3 +1,17 @@
+# What's new compared to original project
+Added `header` support to be more in line with other modules, specifically the weather module. Header can be disabled, then it works as the original module.
+If header is enabled, then location info goes into the header, and additional header string can be set.
+| Option |  Description | 
+|---|---|
+| `header` | Any header string you want. Default: `'Air quality'`|
+| `headerNeeded` | `true` or `false`. Default: `true`|
+
+<img width="325" alt="With header" src="https://github.com/cslev/MMM-AirQuality/blob/master/header.png"/>
+
+<img width="325" alt="Without header" src="https://github.com/cslev/MMM-AirQuality/blob/master/headerless.png"/>
+
+
+
 # AirQuality-Module for the MagicMirror
 
 [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror) | [Air Quality Index](http://aqicn.org/here/)
