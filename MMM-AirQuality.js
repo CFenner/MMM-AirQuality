@@ -15,7 +15,7 @@ Module.register('MMM-AirQuality', {
 		animationSpeed: 1000,
 		headerNeeded: false,
 		header: ''
-	},
+		},
 	start: function(){
 		Log.info('Starting module: ' + this.name);
 		// load data
@@ -57,20 +57,15 @@ Module.register('MMM-AirQuality', {
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
-		if(this.config.headerNeeded)
-		{
-			//do we want header?
+		if(this.config.headerNeeded) {
 			var header = document.createElement("header");
 			var name = document.createElement("table");
 			name.classList.add("tiny", "table");
 			name.innerHTML = "<tr><td class='header_location'>" + this.config.header + "</td>" + 
 							 "<td>" + this.html.city.format(this.data.city)+ "</td></tr>";
-			//append header to wrapper
 			header.appendChild(name);
 			wrapper.appendChild(header);
-
 		}
-		
 		if (this.config.location === '') {
 			wrapper.innerHTML = "Please set the air quality index <i>location</i> in the config for module: " + this.name + ".";
 			wrapper.className = "dimmed light small";
@@ -81,16 +76,16 @@ Module.register('MMM-AirQuality', {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-
+		// if(this.config.colorized) {
+		// 	var div = document.getElementsByClassName('main_text');
+		// 	div.style.color="red";
+		// }
 		wrapper.innerHTML += 
 			this.html.quality.format(
 				this.html.icon,
 				this.data.impact,
-				(this.config.showIndex?' ('+this.data.value+')':''));
-			if (!this.config.headerNeeded)
-			{
-				wrapper.innerHTML += (this.config.showLocation?this.html.city.format(this.data.city):'');
-			}
+				(this.config.showIndex?' ('+this.data.value+')':'') + 
+				(!this.config.headerNeeded?(this.config.showLocation?this.html.city.format(this.data.city):''):''));
 		return wrapper;
 	}
 });
