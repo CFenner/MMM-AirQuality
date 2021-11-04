@@ -1,7 +1,8 @@
 /* Magic Mirror
  * Module: AirQuality
  *
- * By Christopher Fenner http://github.com/CFenner
+ * Original by Christopher Fenner http://github.com/CFenner
+ * Update by cslev https://github.com/cslev
  * MIT Licensed.
  */
 Module.register('MMM-AirQuality', {
@@ -76,10 +77,6 @@ Module.register('MMM-AirQuality', {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-		// if(this.config.colorized) {
-		// 	var div = document.getElementsByClassName('main_text');
-		// 	div.style.color="red";
-		// }
 		wrapper.innerHTML += 
 			this.html.quality.format(
 				this.html.icon,
