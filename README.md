@@ -6,7 +6,12 @@ If header is enabled, then location info goes into the header, and additional he
 | `header` | Any header string you want. Default: `'Air quality'`|
 | `headerNeeded` | `true` or `false`. Default: `true`|
 
+With header
+
 <img width="325" alt="With header" src="https://github.com/cslev/MMM-AirQuality/blob/master/header.png"/>
+
+
+Without header (original layout)
 
 <img width="325" alt="Without header" src="https://github.com/cslev/MMM-AirQuality/blob/master/headerless.png"/>
 
