@@ -8,41 +8,33 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ## Usage 
 
-You need to install the module for your MagicMirror.
+You need to install and configure the module for your MagicMirror.
 
-### Installation
+### Setup
 
-Navigate into your MagicMirror's modules folder:
+Clone the module into your modules folder:
 
 ```shell
-cd ~/MagicMirror/modules
+cd ~/MagicMirror/modules && git clone https://github.com/CFenner/MMM-AirQuality
 ```
-Clone this repository:
-```shell
-git clone https://github.com/CFenner/MMM-AirQuality
-```
-Configure the module in your config.js file.
 
 ### Configuration
 
-To run the module, you need to add the following data to your config.js file.
+Add the module configuration to your `config.js` file.
 
-```
+```js
 {
 	module: 'MMM-AirQuality',
 	position: 'top_center', // you may choose any location
 	config: {
 	  location: 'beijing' // the location to check the index for
 	}
-}
+},
 ```
 
 ### Location
-Use the part behind http://aqicn.org/city/ for your location.
-For example http://aqicn.org/city/netherland/utrecht/griftpark/ would be:
-```
-location: 'netherland/utrecht/griftpark/'
-```
+
+Determine the station you want to display. Select a station on the [map](https://aqicn.org/here/) and copy the location part from the URL. For example http://aqicn.org/city/netherland/utrecht/griftpark/ would be `netherland/utrecht/griftpark/`.
 
 You may want to set the following options in the config section as well:
 
@@ -56,8 +48,6 @@ You may want to set the following options in the config section as well:
 
 ### Known Issues
 
-Due to the AQI rendering script it is not possible to have multiple instances of this module running.
-
-There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim'). 
-
-Not all languages may be supported (see: http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/).
+- Due to the AQI rendering script it is not possible to have multiple instances of this module running.
+- There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim'). 
+- Not all languages may be supported (see: http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/).
