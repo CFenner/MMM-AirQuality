@@ -1,3 +1,8 @@
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=bugs)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
+
 # MMM-AirQuality
 
 A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to display a location's [*air quality index*](https://en.wikipedia.org/wiki/Air_quality_index) using data from [aqicn.org](http://aqicn.org/here/).
