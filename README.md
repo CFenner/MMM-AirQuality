@@ -1,8 +1,10 @@
-# AirQuality-Module for the MagicMirror
+# MMM-AirQuality
 
-[MagicMirror Project on Github](https://github.com/MichMich/MagicMirror) | [Air Quality Index](http://aqicn.org/here/)
+A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to display a location's [*air quality index*](https://en.wikipedia.org/wiki/Air_quality_index) using data from [aqicn.org](http://aqicn.org/here/).
 
-<img width="325" alt="bildschirmfoto 2016-03-31 um 23 08 38" src="https://cloud.githubusercontent.com/assets/9592452/14190991/b8a5de12-f795-11e5-8d5d-593bbf4e4e3c.png">
+## Preview
+
+![preview](.github/preview.png)
 
 ## Usage 
 
