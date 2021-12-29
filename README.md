@@ -50,6 +50,7 @@ You may want to set the following options in the config section as well:
 | `lang` | change the language<br><br>This is **OPTIONAL**.<br>**Default value:** `en` | 
 | `updateInterval` |  change the update period in minutes<br><br>This is **OPTIONAL**.<br>**Default value:** `30` (minutes) | 
 | `showLocation` | toggle location printing<br><br>This is **OPTIONAL**.<br>**Default value:**`true` |
+| `appendLocationNameToHeader` | If set to `true`, the returned location name will be appended to the header of the module.<br><br>**Default value:** `true` |
 | `showIndex` | toggle index printing<br><br>This is **OPTIONAL**.<br>**Default value:**`true` | 
 
 ### Known Issues

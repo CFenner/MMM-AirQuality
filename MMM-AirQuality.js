@@ -11,6 +11,7 @@ Module.register('MMM-AirQuality', {
 		location: '',
 		showLocation: true,
 		showIndex: true,
+		appendLocationNameToHeader: true,
 		updateInterval: 30, // every 30 minutes
 		animationSpeed: 1000
 	},
@@ -52,6 +53,19 @@ Module.register('MMM-AirQuality', {
 	getStyles: function() {
 		return ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'];
 	},
+        // Override getHeader method.
+        getHeader: function () {
+                var header = ""
+                if (this.data.header)
+                        header += this.data.header;
+                if (this.config.appendLocationNameToHeader) {
+                        if (header != "") {
+                                header += " ";
+                        }
+                        header += this.data.city;
+                }
+                return header
+        },
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
@@ -70,7 +84,7 @@ Module.register('MMM-AirQuality', {
 				this.html.icon,
 				this.data.impact,
 				(this.config.showIndex?' ('+this.data.value+')':''))+
-			(this.config.showLocation?this.html.city.format(this.data.city):'');
+			(this.config.showLocation && !this.config.appendLocationNameToHeader?this.html.city.format(this.data.city):'');
 		return wrapper;
 	}
 });
