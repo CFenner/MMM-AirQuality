@@ -10,6 +10,9 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ## Preview
 
+<img width="318" alt="Bildschirmfoto 2022-01-20 um 06 57 01" src="https://user-images.githubusercontent.com/9592452/150281894-a4c87c58-5080-42fb-99c5-d63b10c3c320.png">
+
+
 ![preview](.github/preview.png)
 
 ## Usage 
@@ -32,6 +35,7 @@ Add the module configuration to your `config.js` file.
 {
 	module: 'MMM-AirQuality',
 	position: 'top_center', // you may choose any location
+	header: 'AQI', //choose a header if you like
 	config: {
 	  location: 'beijing' // the location to check the index for
 	}
