@@ -14,7 +14,8 @@ Module.register('MMM-AirQuality', {
 		showIndex: true,
 		appendLocationNameToHeader: true,
 		updateInterval: 30, // every 30 minutes
-		animationSpeed: 1000
+		animationSpeed: 1000,
+		token: '',
 	},
 	start: function(){
 		Log.info('Starting module: ' + this.name);
@@ -85,11 +86,17 @@ Module.register('MMM-AirQuality', {
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
+		if (this.config.token === '') {
+			wrapper.innerHTML = "Please set the AQICN token for module: " + this.name + ". You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>.";
+			wrapper.className = "dimmed light small";
+			return wrapper;
+		}
 		if (this.config.lat === '' || this.config.lng === '') {
 			wrapper.innerHTML = "Please set the air quality index <i>lat</i> and <i>lng</i> in the config for module: " + this.name + ".";
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
+
 		if (!this.loaded) {
 			wrapper.innerHTML = "Loading air quality index ...";
 			wrapper.className = "dimmed light small";
