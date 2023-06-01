@@ -8,7 +8,8 @@ Module.register('MMM-AirQuality', {
 	// Default module config.
 	defaults: {
 		lang: '',
-		location: '',
+		lat: '',
+		lng: '',
 		showLocation: true,
 		showIndex: true,
 		appendLocationNameToHeader: true,
@@ -25,33 +26,48 @@ Module.register('MMM-AirQuality', {
 			this.config.updateInterval * 60 * 1000);
 	},
 	load: function(){
-		_aqiFeed({
-			lang: this.config.lang,
-			city: this.config.location,
-			callback: this.render.bind(this)
-		});
+		fetch (`https://api.waqi.info/feed/geo:${this.config.lat};${this.config.lng}/?token=${this.config.token}`)
+		.then((response) => response.json())
+		.then((data) => this.render(data))
 	},
-	render: function(data){
-		this.data.value = $(data.aqit).find("span").text();
-		this.data.impact = data.impact;
+	render: function(response){
+		let data = response.data;
+		this.data.value = data.aqi; 
 		this.data.city = data.cityname;
 		this.loaded = true;
+
+		if (data.aqi < 51) {
+			this.data.color = "#009966";
+			this.data.impact = 'Good';
+		} else if (data.aqi < 101) {
+			this.data.color = "#ffde33";
+			this.data.impact = 'Moderate';
+		} else if (data.aqi < 151) {
+			this.data.color = '#ff9933';
+			this.data.impact = 'Unhealty for Sensitive Groups';
+		} else if (data.aqi < 201) {
+			this.data.color = '#cc0033';
+			this.data.impact = 'Unhealthy';
+		} else if (data.aqi < 301) {
+			this.data.color = '#7e0023';
+			this.data.impact = 'Hazardous';
+		}
+
 		this.updateDom(this.animationSpeed);
 	},
 	html: {
-		icon: '<i class="fa fa-leaf"></i>',
+		icon: '<i class="fa-solid fa-smog"></i>',
 		city: '<div class="xsmall">{0}</div>',
-		quality: '<div>{0} {1}{2}</div>'
+		quality: '<div style="color: {0}">{1} {2}{3}</div>'
 	},
 	getScripts: function() {
 		return [
-			'aqiFeed.js',
 			'//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js',
 			'String.format.js'
 		];
 	},
 	getStyles: function() {
-		return ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'];
+		return ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'];
 	},
         // Override getHeader method.
         getHeader: function () {
@@ -69,8 +85,8 @@ Module.register('MMM-AirQuality', {
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
-		if (this.config.location === '') {
-			wrapper.innerHTML = "Please set the air quality index <i>location</i> in the config for module: " + this.name + ".";
+		if (this.config.lat === '' || this.config.lng === '') {
+			wrapper.innerHTML = "Please set the air quality index <i>lat</i> and <i>lng</i> in the config for module: " + this.name + ".";
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
@@ -81,6 +97,7 @@ Module.register('MMM-AirQuality', {
 		}
 		wrapper.innerHTML = 
 			this.html.quality.format(
+				this.data.color,
 				this.html.icon,
 				this.data.impact,
 				(this.config.showIndex?' ('+this.data.value+')':''))+
