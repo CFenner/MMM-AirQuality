@@ -24,7 +24,8 @@ Module.register('MMM-AirQuality', {
     DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
   },
 	start: function(){
-		Log.info('Starting module: ' + this.name);
+    const self = this
+    Log.info(`Starting module: ${this.name}`)
 
     setTimeout(function () {
       self.sendSocketNotification(self.notifications.DATA, self.config)
