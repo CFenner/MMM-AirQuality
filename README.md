@@ -38,9 +38,14 @@ Add the module configuration to your `config.js` file.
 	header: 'AQI', //choose a header if you like
 	config: {
 	  location: 'beijing' // the location to check the index for
+    token: '' // add your token here
 	}
 },
 ```
+
+### Token
+
+To use the WAQI API you need to [request a token](https://aqicn.org/data-platform/token/).
 
 ### Location
 

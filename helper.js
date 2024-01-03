@@ -12,7 +12,6 @@ module.exports = {
   },
   start: function () {
     console.log('AirQuality helper started ...')
-    this.token = null
   },
   loadData: async function (config) {
     const self = this
