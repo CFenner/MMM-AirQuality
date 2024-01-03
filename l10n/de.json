@@ -3,5 +3,6 @@
   "GOOD": "gut",
   "MODERATE": "moderat",
   "UNHEALTHY": "ungesund",
-  "HAZARDOUS": "gefährlich"
+  "HAZARDOUS": "gefährlich",
+  "UNKNOWN": "unbekannt"
 }

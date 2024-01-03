@@ -1,0 +1,8 @@
+{
+  "TITLE": "Air quality",
+  "GOOD": "Good",
+  "MODERATE": "Moderate",
+  "UNHEALTHY": "Unhealthy",
+  "HAZARDOUS": "Hazardous",
+  "UNKNOWN": "Unknown"
+}
