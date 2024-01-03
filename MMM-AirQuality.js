@@ -16,8 +16,8 @@ Module.register('MMM-AirQuality', {
 		updateInterval: 30, // every 30 minutes
 		animationSpeed: 1000,
 		token: '',
-    apiBase: 'api.waqi.info',
-    dataEndpoint: '/feed',
+    apiBase: 'api.waqi.info/',
+    dataEndpoint: 'feed/',
 	},
   notifications: {
     DATA: 'AIR_QUALITY_DATA',
@@ -26,6 +26,7 @@ Module.register('MMM-AirQuality', {
 	start: function(){
     const self = this
     Log.info(`Starting module: ${this.name}`)
+    self.loaded = false
 
     setTimeout(function () {
       self.sendSocketNotification(self.notifications.DATA, self.config)
@@ -35,11 +36,6 @@ Module.register('MMM-AirQuality', {
     setInterval(function () {
       self.sendSocketNotification(self.notifications.DATA, self.config)
     }, this.config.updateInterval * 60 * 1000 + this.config.initialDelay * 1000)
-	},
-	load: function(){
-		fetch (`https://api.waqi.info/feed/${this.config.location}/?token=${this.config.token}`)
-		.then((response) => response.json())
-		.then((data) => this.render(data))
 	},
 	render: function(response){
 		let data = response.data;
