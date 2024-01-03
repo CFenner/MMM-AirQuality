@@ -39,8 +39,8 @@ Module.register('MMM-AirQuality', {
 	},
 	render: function(response){
 		let data = response.data;
-		this.data.value = data.aqi; 
-		this.data.city = data.cityname;
+		this.data.value = data.aqi;
+		this.data.city = data.city.name;
 		this.loaded = true;
 
 		if (data.aqi < 51) {
@@ -59,8 +59,6 @@ Module.register('MMM-AirQuality', {
 			this.data.color = '#7e0023';
 			this.data.impact = 'Hazardous';
 		}
-
-		this.updateDom(this.animationSpeed);
 	},
 	html: {
 		icon: '<i class="fa-solid fa-smog"></i>',
@@ -76,19 +74,19 @@ Module.register('MMM-AirQuality', {
 	getStyles: function() {
 		return ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'];
 	},
-        // Override getHeader method.
-        getHeader: function () {
-                var header = ""
-                if (this.data.header)
-                        header += this.data.header;
-                if (this.config.appendLocationNameToHeader) {
-                        if (header != "") {
-                                header += " ";
-                        }
-                        header += this.data.city;
-                }
-                return header
-        },
+  // Override getHeader method.
+  getHeader: function () {
+    var header = ""
+    if (this.data.header)
+      header += this.data.header;
+    if (this.config.appendLocationNameToHeader) {
+      if (header != "") {
+        header += " ";
+      }
+      header += this.data.city;
+    }
+    return header
+  },
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
@@ -125,6 +123,7 @@ Module.register('MMM-AirQuality', {
         if (payload.status === 'OK') {
           console.log('Data %o', payload.payloadReturn)
           self.render(payload.payloadReturn)
+          self.updateDom(this.animationSpeed);
         } else {
           console.log('DATA FAILED ' + payload.message)
         }
