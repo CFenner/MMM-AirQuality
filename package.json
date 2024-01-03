@@ -1,0 +1,21 @@
+{
+    "name": "airquality",
+    "version": "2.0.0",
+    "description": "A module for the MagicMirror² to display a location's air quality index.",
+    "main": "MMM-AirQuality.js",
+    "homepage": "https://github.com/CFenner/MMM-AirQuality#readme",
+    "bugs": {
+      "url": "https://github.com/CFenner/MMM-AirQuality/issues"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/CFenner/MMM-AirQuality.git"
+    },
+    "keywords": [
+      "magicmirror",
+      "aqi",
+      "smarthome"
+    ],
+    "author": "Christopher Fenner",
+    "license": "MIT"
+  }
