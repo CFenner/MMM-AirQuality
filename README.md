@@ -46,6 +46,8 @@ Add the module configuration to your `config.js` file.
 
 Determine the station you want to display. Select a station on the [map](https://aqicn.org/here/) and copy the location part from the URL. For example http://aqicn.org/city/netherland/utrecht/griftpark/ would be `netherland/utrecht/griftpark/`.
 
+You may also get the data for specific longitude and latitude. Set the `location` to `geo:<lat>;<long>/` and replace `<lat>` and `<long>` with your values.
+
 You may want to set the following options in the config section as well:
 
 | Option |  Description | Default | Required |
