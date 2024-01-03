@@ -8,8 +8,7 @@ Module.register('MMM-AirQuality', {
 	// Default module config.
 	defaults: {
 		lang: '',
-		lat: '',
-		lng: '',
+		location: '',
 		showLocation: true,
 		showIndex: true,
 		appendLocationNameToHeader: true,
@@ -27,7 +26,7 @@ Module.register('MMM-AirQuality', {
 			this.config.updateInterval * 60 * 1000);
 	},
 	load: function(){
-		fetch (`https://api.waqi.info/feed/geo:${this.config.lat};${this.config.lng}/?token=${this.config.token}`)
+		fetch (`https://api.waqi.info/feed/${this.config.location}/?token=${this.config.token}`)
 		.then((response) => response.json())
 		.then((data) => this.render(data))
 	},
@@ -91,8 +90,8 @@ Module.register('MMM-AirQuality', {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-		if (this.config.lat === '' || this.config.lng === '') {
-			wrapper.innerHTML = "Please set the air quality index <i>lat</i> and <i>lng</i> in the config for module: " + this.name + ".";
+		if (this.config.location === '') {
+			wrapper.innerHTML = "Please set the air quality index <i>location</i> in the config for module: " + this.name + ".";
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
