@@ -59,6 +59,7 @@ Module.register('MMM-AirQuality', {
 			this.data.color = '#7e0023';
 			this.data.impact = 'Hazardous';
 		}
+    this.data.impact = this.translate(this.data.impact.toUpperCase())
 	},
 	html: {
 		icon: '<i class="fa-solid fa-smog"></i>',
@@ -115,6 +116,11 @@ Module.register('MMM-AirQuality', {
 			(this.config.showLocation && !this.config.appendLocationNameToHeader?this.html.city.format(this.data.city):'');
 		return wrapper;
 	},
+  getTranslations: function () {
+    return {
+      de: 'l10n/de.json', // fallback language
+    }
+  },
   socketNotificationReceived: function (notification, payload) {
     const self = this
     Log.debug('received ' + notification)
