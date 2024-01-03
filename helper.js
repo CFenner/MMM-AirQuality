@@ -17,7 +17,7 @@ module.exports = {
   loadData: async function (config) {
     const self = this
     self.config = config
-        let url = `https://${self.config.apiBase}${self.config.dataEndpoint}?token=${this.config.token}`
+        let url = `https://${self.config.apiBase}${self.config.dataEndpoint}${self.config.location}/?token=${this.config.token}`
         console.log(`AirQuality loaded: ${url}`)
 
       let result = await fetch(url)
