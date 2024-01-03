@@ -122,7 +122,12 @@ Module.register('MMM-AirQuality', {
     Log.debug('received ' + notification)
     switch (notification) {
       case self.notifications.DATA_RESPONSE:
-		    self.render(payload)
+        if (payload.status === 'OK') {
+          console.log('Data %o', payload.payloadReturn)
+          self.render(payload.payloadReturn)
+        } else {
+          console.log('DATA FAILED ' + payload.message)
+        }
         break
     }
   },
