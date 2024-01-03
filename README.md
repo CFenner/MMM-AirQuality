@@ -15,7 +15,7 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ![preview](.github/preview.png)
 
-## Usage 
+## Usage
 
 You need to install and configure the module for your MagicMirror.
 
@@ -60,5 +60,5 @@ You may want to set the following options in the config section as well:
 ### Known Issues
 
 - Due to the AQI rendering script it is not possible to have multiple instances of this module running.
-- There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim'). 
+- There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim').
 - Not all languages may be supported (see: http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/).

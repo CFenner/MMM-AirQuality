@@ -108,7 +108,7 @@ Module.register('MMM-AirQuality', {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-		wrapper.innerHTML = 
+		wrapper.innerHTML =
 			this.html.quality.format(
 				this.data.color,
 				this.html.icon,
