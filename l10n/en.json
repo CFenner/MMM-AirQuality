@@ -2,6 +2,7 @@
   "TITLE": "Air quality",
   "GOOD": "Good",
   "MODERATE": "Moderate",
+  "UNHEALTHY_FOR_SENSITIVE_GROUPS": "Unhealty for Sensitive Groups",
   "UNHEALTHY": "Unhealthy",
   "HAZARDOUS": "Hazardous",
   "UNKNOWN": "Unknown"
