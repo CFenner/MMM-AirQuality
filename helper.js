@@ -17,8 +17,10 @@ module.exports = {
   loadData: async function (config) {
     const self = this
     self.config = config
+        let url = `https://${self.config.apiBase}${self.config.dataEndpoint}?token=${this.config.token}`
+        console.log(`AirQuality loaded: ${url}`)
 
-      let result = await fetch(`https://${self.config.apiBase}${self.config.dataEndpoint}/?token=${this.config.token}`)
+      let result = await fetch(url)
         .then(response => response.json())
 
       self.sendSocketNotification(self.notifications.DATA_RESPONSE, {
