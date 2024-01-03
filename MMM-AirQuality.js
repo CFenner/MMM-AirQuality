@@ -42,25 +42,33 @@ Module.register('MMM-AirQuality', {
 		this.data.value = data.aqi;
 		this.data.city = data.city.name;
 		this.loaded = true;
-
-		if (data.aqi < 51) {
-			this.data.color = "#009966";
-			this.data.impact = 'Good';
-		} else if (data.aqi < 101) {
-			this.data.color = "#ffde33";
-			this.data.impact = 'Moderate';
-		} else if (data.aqi < 151) {
-			this.data.color = '#ff9933';
-			this.data.impact = 'Unhealty for Sensitive Groups';
-		} else if (data.aqi < 201) {
-			this.data.color = '#cc0033';
-			this.data.impact = 'Unhealthy';
-		} else if (data.aqi < 301) {
-			this.data.color = '#7e0023';
-			this.data.impact = 'Hazardous';
-		}
-    this.data.impact = this.translate(this.data.impact.toUpperCase())
+    this.data.impact = this.getImpact(data.aqi)
+    this.data.color = this.getColor(this.data.impact)
 	},
+  getImpact: function(aqi) {
+		if (aqi < 51)
+      return "GOOD"
+		if (aqi < 101)
+      return "MODERATE"
+		if (data.aqi < 151)
+			return 'UNHEALTHY_FOR_SENSITIVE_GROUPS';
+		if (data.aqi < 201)
+			return 'UNHEALTHY';
+    if (aqi < 301)
+			return "HAZARDOUS"
+    return "UNKNOWN"
+  },
+  getColor: function(impact) {
+    colors = {
+      "GOOD": "#009966",
+      "MODERATE": "#ffde33",
+      'UNHEALTHY_FOR_SENSITIVE_GROUPS': '#ff9933',
+      "UNHEALTHY": '#cc0033',
+      "HAZARDOUS": '#7e0023',
+      "UNKNOWN": '#333333',
+    }
+    return colors[impact]
+  },
 	html: {
 		icon: '<i class="fa-solid fa-smog"></i>',
 		city: '<div class="xsmall">{0}</div>',
@@ -111,14 +119,15 @@ Module.register('MMM-AirQuality', {
 			this.html.quality.format(
 				this.data.color,
 				this.html.icon,
-				this.data.impact,
+        this.translate(this.data.impact),
 				(this.config.showIndex?' ('+this.data.value+')':''))+
 			(this.config.showLocation && !this.config.appendLocationNameToHeader?this.html.city.format(this.data.city):'');
 		return wrapper;
 	},
   getTranslations: function () {
     return {
-      de: 'l10n/de.json', // fallback language
+      en: 'l10n/en.json', // fallback language
+      de: 'l10n/de.json',
     }
   },
   socketNotificationReceived: function (notification, payload) {
