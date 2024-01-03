@@ -7,6 +7,7 @@
 Module.register('MMM-AirQuality', {
 	// Default module config.
 	defaults: {
+    initialDelay: 0,
 		lang: '',
 		location: '',
 		showLocation: true,
@@ -15,15 +16,24 @@ Module.register('MMM-AirQuality', {
 		updateInterval: 30, // every 30 minutes
 		animationSpeed: 1000,
 		token: '',
+    apiBase: 'api.waqi.info',
+    dataEndpoint: '/feed',
 	},
+  notifications: {
+    DATA: 'AIR_QUALITY_DATA',
+    DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
+  },
 	start: function(){
 		Log.info('Starting module: ' + this.name);
-		// load data
-		this.load();
-		// schedule refresh
-		setInterval(
-			this.load.bind(this),
-			this.config.updateInterval * 60 * 1000);
+
+    setTimeout(function () {
+      self.sendSocketNotification(self.notifications.DATA, self.config)
+    }, this.config.initialDelay * 1000)
+
+    // set auto-update
+    setInterval(function () {
+      self.sendSocketNotification(self.notifications.DATA, self.config)
+    }, this.config.updateInterval * 60 * 1000 + this.config.initialDelay * 1000)
 	},
 	load: function(){
 		fetch (`https://api.waqi.info/feed/${this.config.location}/?token=${this.config.token}`)
@@ -109,5 +119,14 @@ Module.register('MMM-AirQuality', {
 				(this.config.showIndex?' ('+this.data.value+')':''))+
 			(this.config.showLocation && !this.config.appendLocationNameToHeader?this.html.city.format(this.data.city):'');
 		return wrapper;
-	}
+	},
+  socketNotificationReceived: function (notification, payload) {
+    const self = this
+    Log.debug('received ' + notification)
+    switch (notification) {
+      case self.notifications.DATA_RESPONSE:
+		    self.render(payload)
+        break
+    }
+  },
 });
