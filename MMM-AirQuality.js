@@ -107,9 +107,6 @@ Module.register('MMM-AirQuality', {
   //     (this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '')
   //   return wrapper
   // },
-  getTemplate: function () {
-    return 'template.njk'
-  },
   updateData: function (response) {
     this.loaded = true
     this.data.city = response.data.city.name
