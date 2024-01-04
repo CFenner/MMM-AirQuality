@@ -11,9 +11,15 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ## Preview
 
-![preview](.github/preview1.png)
+![preview](.github/preview-unhealthy.png)
 
-![preview](.github/preview2.png)
+with header and location
+
+![preview](.github/preview-good.png)
+
+without any header
+
+![preview](.github/preview-very-unhealthy.png)
 
 ## Usage
 
@@ -50,7 +56,7 @@ To use the WAQI API you need to [request a token](https://aqicn.org/data-platfor
 
 Determine the station you want to display. Select a station on the [map](https://aqicn.org/here/) and copy the location part from the URL. For example `http://aqicn.org/city/netherland/utrecht/griftpark/` would be `netherland/utrecht/griftpark/`.
 
-You may also get the data for specific longitude and latitude. Set the `location` to `geo:<lat>;<long>/` and replace `<lat>` and `<long>` with your values.
+You may also get the data for specific longitude and latitude. Set the `location` to `geo::lat;:lng/` and replace `lat` and `lng` with your values.
 
 You may want to set the following options in the config section as well:
 
