@@ -14,9 +14,11 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 ![preview](.github/preview-unhealthy.png)
 
 with header and location
+
 ![preview](.github/preview-good.png)
 
 without any header
+
 ![preview](.github/preview-very-unhealthy.png)
 
 ## Usage
