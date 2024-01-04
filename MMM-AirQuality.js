@@ -1,4 +1,4 @@
-/* Magic Mirror
+/* MagicMirror²
  * Module: AirQuality
  *
  * By Christopher Fenner http://github.com/CFenner
