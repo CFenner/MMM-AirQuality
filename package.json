@@ -25,6 +25,7 @@
     },
     "devDependencies": {
         "eslint": "8.56.0",
-        "eslint-config-standard": "17.1.0"
+        "eslint-config-standard": "17.1.0",
+        "markdownlint": "0.32.1"
     }
 }
