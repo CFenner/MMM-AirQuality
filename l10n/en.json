@@ -4,6 +4,7 @@
   "MODERATE": "Moderate",
   "UNHEALTHY_FOR_SENSITIVE_GROUPS": "Unhealty for Sensitive Groups",
   "UNHEALTHY": "Unhealthy",
+  "VERY_UNHEALTHY": "Very Unhealthy",
   "HAZARDOUS": "Hazardous",
   "UNKNOWN": "Unknown"
 }
