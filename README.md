@@ -13,10 +13,9 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ## Preview
 
-<img width="318" alt="Bildschirmfoto 2022-01-20 um 06 57 01" src="https://user-images.githubusercontent.com/9592452/150281894-a4c87c58-5080-42fb-99c5-d63b10c3c320.png">
+![preview](.github/preview1.png)
 
-
-![preview](.github/preview.png)
+![preview](.github/preview2.png)
 
 ## Usage
 
@@ -36,13 +35,13 @@ Add the module configuration to your `config.js` file.
 
 ```js
 {
-	module: 'MMM-AirQuality',
-	position: 'top_center', // you may choose any location
-	header: 'AQI', //choose a header if you like
-	config: {
-	  location: 'beijing' // the location to check the index for
+  module: 'MMM-AirQuality',
+  position: 'top_center', // you may choose any location
+  header: 'AQI', //choose a header if you like
+  config: {
+   location: 'beijing' // the location to check the index for
     token: '' // add your token here
-	}
+  }
 },
 ```
 
@@ -52,7 +51,7 @@ To use the WAQI API you need to [request a token](https://aqicn.org/data-platfor
 
 ### Location
 
-Determine the station you want to display. Select a station on the [map](https://aqicn.org/here/) and copy the location part from the URL. For example http://aqicn.org/city/netherland/utrecht/griftpark/ would be `netherland/utrecht/griftpark/`.
+Determine the station you want to display. Select a station on the [map](https://aqicn.org/here/) and copy the location part from the URL. For example `http://aqicn.org/city/netherland/utrecht/griftpark/` would be `netherland/utrecht/griftpark/`.
 
 You may also get the data for specific longitude and latitude. Set the `location` to `geo:<lat>;<long>/` and replace `<lat>` and `<long>` with your values.
 
@@ -71,7 +70,7 @@ You may want to set the following options in the config section as well:
 
 - Due to the AQI rendering script it is not possible to have multiple instances of this module running.
 - There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim').
-- Not all languages may be supported (see: http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/).
+- Not all languages may be supported (see: <http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/>).
 
 ## Contributors ✨
 
