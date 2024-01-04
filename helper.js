@@ -22,8 +22,9 @@ module.exports = {
       .then(response => response.json())
 
     self.sendSocketNotification(self.notifications.DATA_RESPONSE, {
-      payloadReturn: { identifier: payload.identifier, result },
+      payloadReturn: result,
       status: 'OK',
+      identifier: payload.identifier,
     })
   },
   socketNotificationReceived: function (notification, payload) {
