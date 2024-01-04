@@ -1,4 +1,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=bugs)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
@@ -69,3 +72,25 @@ You may want to set the following options in the config section as well:
 - Due to the AQI rendering script it is not possible to have multiple instances of this module running.
 - There is a bug in the skript that prevent some locations from being displayed (e.g. 'Mannheim').
 - Not all languages may be supported (see: http://aqicn.org/faq/2015-07-28/air-quality-widget-new-improved-feed/).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.justin-c.com"><img src="https://avatars.githubusercontent.com/u/1727656?v=4?s=100" width="100px;" alt="Justin Cherniak"/><br /><sub><b>Justin Cherniak</b></sub></a><br /><a href="https://github.com/CFenner/MMM-AirQuality/commits?author=jcherniak" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
