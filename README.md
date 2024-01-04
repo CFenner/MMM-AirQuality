@@ -1,10 +1,8 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=CFenner_MMM-AirQuality&metric=bugs)](https://sonarcloud.io/summary/new_code?id=CFenner_MMM-AirQuality)
+[![All Contributors](https://img.shields.io/github/all-contributors/CFenner/MMM-AirQuality/main)](#contributors-)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://choosealicense.com/licenses/mit/)
 
 # MMM-AirQuality
