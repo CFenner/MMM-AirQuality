@@ -83,7 +83,7 @@ Module.register('MMM-AirQuality', {
     return header
   },
   getTemplate: function () {
-    return 'template.njk'
+    return `${this.name}.njk`
   },
   getTemplateData: function () {
     let message = ''
