@@ -99,7 +99,7 @@ Module.register('MMM-AirQuality', {
       index: this.data.value,
       impact: this.data.impact,
       color: this.data.color,
-      showLocation: this.config.showLocation,
+      showLocation: this.config.showLocation && !this.config.appendLocationNameToHeader,
       showIndex: this.config.showIndex,
       labelLoading: this.translate('LOADING'),
       message,
