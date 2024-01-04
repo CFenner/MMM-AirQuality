@@ -1,6 +1,6 @@
 <div class="dimmed light small">
   {% if message %}
-    {{ message }}
+    {{ message|safe }}
   {% elif loaded %}
     <div style="color: {{ color }}"><i class="fa-solid fa-smog"></i> {{ impact }}{% if showIndex %} ({{ index }}){% endif %}</div>
     {% if showLocation %}
