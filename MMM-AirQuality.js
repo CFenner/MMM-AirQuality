@@ -46,16 +46,11 @@ Module.register('MMM-AirQuality', {
     this.data.color = this.getColor(this.data.impact)
 	},
   getImpact: function(aqi) {
-		if (aqi < 51)
-      return "GOOD"
-		if (aqi < 101)
-      return "MODERATE"
-		if (data.aqi < 151)
-			return 'UNHEALTHY_FOR_SENSITIVE_GROUPS';
-		if (data.aqi < 201)
-			return 'UNHEALTHY';
-    if (aqi < 301)
-			return "HAZARDOUS"
+		if (aqi < 51) return "GOOD"
+		if (aqi < 101) return "MODERATE"
+		if (data.aqi < 151) return 'UNHEALTHY_FOR_SENSITIVE_GROUPS';
+		if (data.aqi < 201) return 'UNHEALTHY';
+    if (aqi < 301) return "HAZARDOUS"
     return "UNKNOWN"
   },
   getColor: function(impact) {
