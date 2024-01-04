@@ -1,5 +1,5 @@
 {
-  "TITLE": "Air quality",
+  "HEADER": "Air Quality Index",
   "GOOD": "Good",
   "MODERATE": "Moderate",
   "UNHEALTHY_FOR_SENSITIVE_GROUPS": "Unhealty for Sensitive Groups",
