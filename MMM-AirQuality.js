@@ -88,9 +88,9 @@ Module.register('MMM-AirQuality', {
   getTemplateData: function () {
     let message = ''
     if (this.config.token === '') {
-      message = 'Please set a token. You can acquire one at <a href=\'https://aqicn.org/data-platform/token/\'>https://aqicn.org/data-platform/token/</a>.'
+      message = `Please set a token for ${this.name}.<br>You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>.`
     } else if (this.config.location === '') {
-      message = 'No location set!'
+      message = `Please set a location for ${this.name}!`
     }
 
     return {
