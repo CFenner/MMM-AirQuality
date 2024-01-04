@@ -51,7 +51,7 @@ Module.register('MMM-AirQuality', {
     this.loaded = true
     this.data.city = response.data.city.name
     this.data.value = response.data.aqi
-    this.data.impact = this.getImpact(response.data.aqi)
+    this.data.impact = this.translate(this.getImpact(response.data.aqi))
     this.data.color = this.colors[this.data.impact]
   },
   getImpact: function (index) {
