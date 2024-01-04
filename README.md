@@ -36,13 +36,13 @@ Add the module configuration to your `config.js` file.
 
 ```js
 {
-	module: 'MMM-AirQuality',
-	position: 'top_center', // you may choose any location
-	header: 'AQI', //choose a header if you like
-	config: {
-	  location: 'beijing' // the location to check the index for
+  module: 'MMM-AirQuality',
+  position: 'top_center', // you may choose any location
+  header: 'AQI', //choose a header if you like
+  config: {
+    location: 'beijing' // the location to check the index for
     token: '' // add your token here
-	}
+  }
 },
 ```
 

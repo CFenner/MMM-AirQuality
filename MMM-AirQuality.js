@@ -24,12 +24,12 @@ Module.register('MMM-AirQuality', {
     DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
   },
   colors: {
-    "GOOD": "#009966",
-    "MODERATE": "#ffde33",
-    'UNHEALTHY_FOR_SENSITIVE_GROUPS': '#ff9933',
-    "UNHEALTHY": '#cc0033',
-    "HAZARDOUS": '#7e0023',
-    "UNKNOWN": '#333333',
+    GOOD: '#009966',
+    MODERATE: '#ffde33',
+    UNHEALTHY_FOR_SENSITIVE_GROUPS: '#ff9933',
+    UNHEALTHY: '#cc0033',
+    HAZARDOUS: '#7e0023',
+    UNKNOWN: '#333333',
   },
   start: function () {
     const self = this
@@ -44,40 +44,40 @@ Module.register('MMM-AirQuality', {
     setInterval(function () {
       self.sendSocketNotification(self.notifications.DATA, self.config)
     }, this.config.updateInterval * 60 * 1000 + this.config.initialDelay * 1000)
-	},
-	render: function(response){
-		let data = response.data;
-		this.data.value = data.aqi;
-		this.data.city = data.city.name;
-		this.loaded = true;
+  },
+  render: function (response) {
+    const data = response.data
+    this.data.value = data.aqi
+    this.data.city = data.city.name
+    this.loaded = true
     this.data.impact = this.getImpact(data.aqi)
     this.data.color = this.getColor(this.data.impact)
-	},
-  getImpact: function(aqi) {
-		if (aqi < 51) return "GOOD"
-		if (aqi < 101) return "MODERATE"
-		if (data.aqi < 151) return 'UNHEALTHY_FOR_SENSITIVE_GROUPS';
-		if (data.aqi < 201) return 'UNHEALTHY';
-    if (aqi < 301) return "HAZARDOUS"
-    return "UNKNOWN"
   },
-  getColor: function(impact) {
+  getImpact: function (aqi) {
+    if (aqi < 51) return 'GOOD'
+    if (aqi < 101) return 'MODERATE'
+    if (aqi < 151) return 'UNHEALTHY_FOR_SENSITIVE_GROUPS'
+    if (aqi < 201) return 'UNHEALTHY'
+    if (aqi < 301) return 'HAZARDOUS'
+    return 'UNKNOWN'
+  },
+  getColor: function (impact) {
     return this.colors[impact]
   },
-	html: {
-		icon: '<i class="fa-solid fa-smog"></i>',
-		city: '<div class="xsmall">{0}</div>',
-		quality: '<div style="color: {0}">{1} {2}{3}</div>'
-	},
-	getScripts: function() {
-		return [
-			'//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js',
-			'String.format.js'
-		];
-	},
-	getStyles: function() {
-		return ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'];
-	},
+  html: {
+    icon: '<i class="fa-solid fa-smog"></i>',
+    city: '<div class="xsmall">{0}</div>',
+    quality: '<div style="color: {0}">{1} {2}{3}</div>',
+  },
+  getScripts: function () {
+    return [
+      '//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js',
+      'String.format.js',
+    ]
+  },
+  getStyles: function () {
+    return ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css']
+  },
   // Override getHeader method.
   getHeader: function () {
     let header = ''
@@ -104,20 +104,20 @@ Module.register('MMM-AirQuality', {
       return wrapper
     }
 
-		if (!this.loaded) {
-			wrapper.innerHTML = "Loading air quality index ...";
-			wrapper.className = "dimmed light small";
-			return wrapper;
-		}
-		wrapper.innerHTML =
-			this.html.quality.format(
-				this.data.color,
-				this.html.icon,
+    if (!this.loaded) {
+      wrapper.innerHTML = 'Loading air quality index ...'
+      wrapper.className = 'dimmed light small'
+      return wrapper
+    }
+    wrapper.innerHTML =
+      this.html.quality.format(
+        this.data.color,
+        this.html.icon,
         this.translate(this.data.impact),
-				(this.config.showIndex ? ' (' + this.data.value + ')' : '')) +
-			(this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '');
-		return wrapper;
-	},
+        (this.config.showIndex ? ' (' + this.data.value + ')' : '')) +
+      (this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '')
+    return wrapper
+  },
   getTranslations: function () {
     return {
       en: 'l10n/en.json', // fallback language
