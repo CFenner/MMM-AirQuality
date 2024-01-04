@@ -23,6 +23,14 @@ Module.register('MMM-AirQuality', {
     DATA: 'AIR_QUALITY_DATA',
     DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
   },
+  colors: {
+    "GOOD": "#009966",
+    "MODERATE": "#ffde33",
+    'UNHEALTHY_FOR_SENSITIVE_GROUPS': '#ff9933',
+    "UNHEALTHY": '#cc0033',
+    "HAZARDOUS": '#7e0023',
+    "UNKNOWN": '#333333',
+  },
 	start: function(){
     const self = this
     Log.info(`Starting module: ${this.name}`)
@@ -54,15 +62,7 @@ Module.register('MMM-AirQuality', {
     return "UNKNOWN"
   },
   getColor: function(impact) {
-    colors = {
-      "GOOD": "#009966",
-      "MODERATE": "#ffde33",
-      'UNHEALTHY_FOR_SENSITIVE_GROUPS': '#ff9933',
-      "UNHEALTHY": '#cc0033',
-      "HAZARDOUS": '#7e0023',
-      "UNKNOWN": '#333333',
-    }
-    return colors[impact]
+    return this.colors[impact]
   },
 	html: {
 		icon: '<i class="fa-solid fa-smog"></i>',
