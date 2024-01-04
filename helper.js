@@ -13,9 +13,10 @@ module.exports = {
   start: function () {
     console.log('AirQuality helper started ...')
   },
-  loadData: async function (config) {
+  loadData: async function (payload) {
     const self = this
-    self.config = config
+    self.config = payload.config
+    const identifier = payload.identifier
     const url = `https://${self.config.apiBase}${self.config.dataEndpoint}${self.config.location}/?token=${this.config.token}`
     console.log(`AirQuality loaded: ${url}`)
 
@@ -23,7 +24,7 @@ module.exports = {
       .then(response => response.json())
 
     self.sendSocketNotification(self.notifications.DATA_RESPONSE, {
-      payloadReturn: result,
+      payloadReturn: { identifier, result },
       status: 'OK',
     })
   },

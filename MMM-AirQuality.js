@@ -38,7 +38,7 @@ Module.register('MMM-AirQuality', {
     self.loaded = false
 
     setTimeout(function () {
-      self.sendSocketNotification(self.notifications.DATA, self.config)
+      self.sendSocketNotification(self.notifications.DATA, self)
     }, this.config.initialDelay * 1000)
 
     // set auto-update
@@ -138,12 +138,14 @@ Module.register('MMM-AirQuality', {
     Log.debug('received ' + notification)
     switch (notification) {
       case self.notifications.DATA_RESPONSE:
-        if (payload.status === 'OK') {
-          console.log('Data %o', payload.payloadReturn)
-          self.render(payload.payloadReturn)
-          self.updateDom(this.animationSpeed)
-        } else {
-          console.log('DATA FAILED ' + payload.message)
+        if (payload.identifier === this.identifier) {
+          if (payload.result.status === 'OK') {
+            console.log('Data %o', payload.result.payloadReturn)
+            self.render(payload.result.payloadReturn)
+            self.updateDom(this.animationSpeed)
+          } else {
+            console.log('DATA FAILED ' + payload.result.message)
+          }
         }
         break
     }
