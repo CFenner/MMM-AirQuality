@@ -5,20 +5,20 @@
  * MIT Licensed.
  */
 Module.register('MMM-AirQuality', {
-	// Default module config.
-	defaults: {
+  // Default module config.
+  defaults: {
     initialDelay: 0,
-		lang: '',
-		location: '',
-		showLocation: true,
-		showIndex: true,
-		appendLocationNameToHeader: true,
-		updateInterval: 30, // every 30 minutes
-		animationSpeed: 1000,
-		token: '',
+    lang: '',
+    location: '',
+    showLocation: true,
+    showIndex: true,
+    appendLocationNameToHeader: true,
+    updateInterval: 30, // every 30 minutes
+    animationSpeed: 1000,
+    token: '',
     apiBase: 'api.waqi.info/',
     dataEndpoint: 'feed/',
-	},
+  },
   notifications: {
     DATA: 'AIR_QUALITY_DATA',
     DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
@@ -31,7 +31,7 @@ Module.register('MMM-AirQuality', {
     "HAZARDOUS": '#7e0023',
     "UNKNOWN": '#333333',
   },
-	start: function(){
+  start: function () {
     const self = this
     Log.info(`Starting module: ${this.name}`)
     self.loaded = false
@@ -80,30 +80,29 @@ Module.register('MMM-AirQuality', {
 	},
   // Override getHeader method.
   getHeader: function () {
-    var header = ""
-    if (this.data.header)
-      header += this.data.header;
+    let header = ''
+    if (this.data.header) { header += this.data.header }
     if (this.config.appendLocationNameToHeader) {
-      if (header != "") {
-        header += " ";
+      if (header !== '') {
+        header += ' '
       }
-      header += this.data.city;
+      header += this.data.city
     }
     return header
   },
-	// Override dom generator.
-	getDom: function() {
-		var wrapper = document.createElement("div");
-		if (this.config.token === '') {
-			wrapper.innerHTML = "Please set the AQICN token for module: " + this.name + ". You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>.";
-			wrapper.className = "dimmed light small";
-			return wrapper;
-		}
-		if (this.config.location === '') {
-			wrapper.innerHTML = "Please set the air quality index <i>location</i> in the config for module: " + this.name + ".";
-			wrapper.className = "dimmed light small";
-			return wrapper;
-		}
+  // Override dom generator.
+  getDom: function () {
+    const wrapper = document.createElement('div')
+    if (this.config.token === '') {
+      wrapper.innerHTML = 'Please set the AQICN token for module: ' + this.name + ". You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>."
+      wrapper.className = 'dimmed light small'
+      return wrapper
+    }
+    if (this.config.location === '') {
+      wrapper.innerHTML = 'Please set the air quality index <i>location</i> in the config for module: ' + this.name + '.'
+      wrapper.className = 'dimmed light small'
+      return wrapper
+    }
 
 		if (!this.loaded) {
 			wrapper.innerHTML = "Loading air quality index ...";
@@ -115,8 +114,8 @@ Module.register('MMM-AirQuality', {
 				this.data.color,
 				this.html.icon,
         this.translate(this.data.impact),
-				(this.config.showIndex?' ('+this.data.value+')':''))+
-			(this.config.showLocation && !this.config.appendLocationNameToHeader?this.html.city.format(this.data.city):'');
+				(this.config.showIndex ? ' (' + this.data.value + ')' : '')) +
+			(this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '');
 		return wrapper;
 	},
   getTranslations: function () {
@@ -133,11 +132,11 @@ Module.register('MMM-AirQuality', {
         if (payload.status === 'OK') {
           console.log('Data %o', payload.payloadReturn)
           self.render(payload.payloadReturn)
-          self.updateDom(this.animationSpeed);
+          self.updateDom(this.animationSpeed)
         } else {
           console.log('DATA FAILED ' + payload.message)
         }
         break
     }
   },
-});
+})

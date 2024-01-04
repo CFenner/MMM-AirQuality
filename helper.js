@@ -16,16 +16,16 @@ module.exports = {
   loadData: async function (config) {
     const self = this
     self.config = config
-        let url = `https://${self.config.apiBase}${self.config.dataEndpoint}${self.config.location}/?token=${this.config.token}`
-        console.log(`AirQuality loaded: ${url}`)
+    const url = `https://${self.config.apiBase}${self.config.dataEndpoint}${self.config.location}/?token=${this.config.token}`
+    console.log(`AirQuality loaded: ${url}`)
 
-      let result = await fetch(url)
-        .then(response => response.json())
+    const result = await fetch(url)
+      .then(response => response.json())
 
-      self.sendSocketNotification(self.notifications.DATA_RESPONSE, {
-        payloadReturn: result,
-        status: 'OK',
-      })
+    self.sendSocketNotification(self.notifications.DATA_RESPONSE, {
+      payloadReturn: result,
+      status: 'OK',
+    })
   },
   socketNotificationReceived: function (notification, payload) {
     switch (notification) {
