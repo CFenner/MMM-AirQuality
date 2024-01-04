@@ -26,3 +26,23 @@ jobs:
         run: npm clean-install
       - name: Validate JS Sources
         run: npm run validate:js
+  markdownlint:
+    runs-on: ubuntu-latest
+    name: 'MarkdownLint'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Validate Markdown Sources
+        uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          files: .
+  package-lock-is-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+          cache: "npm"
+      - run: npm install --ignore-scripts
+      - run: git diff --exit-code
