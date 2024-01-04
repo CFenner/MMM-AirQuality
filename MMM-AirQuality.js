@@ -8,7 +8,6 @@ Module.register('MMM-AirQuality', {
   // Default module config.
   defaults: {
     initialDelay: 0,
-    lang: '',
     location: '',
     showLocation: true,
     showIndex: true,
@@ -38,12 +37,12 @@ Module.register('MMM-AirQuality', {
     self.loaded = false
 
     setTimeout(function () {
-      self.sendSocketNotification(self.notifications.DATA, self.config)
+      self.sendSocketNotification(self.notifications.DATA, { identifier: self.identifier, config: self.config })
     }, this.config.initialDelay * 1000)
 
     // set auto-update
     setInterval(function () {
-      self.sendSocketNotification(self.notifications.DATA, self.config)
+      self.sendSocketNotification(self.notifications.DATA, { identifier: self.identifier, config: self.config })
     }, this.config.updateInterval * 60 * 1000 + this.config.initialDelay * 1000)
   },
   render: function (response) {
@@ -138,12 +137,14 @@ Module.register('MMM-AirQuality', {
     Log.debug('received ' + notification)
     switch (notification) {
       case self.notifications.DATA_RESPONSE:
-        if (payload.status === 'OK') {
-          console.log('Data %o', payload.payloadReturn)
-          self.render(payload.payloadReturn)
-          self.updateDom(this.animationSpeed)
-        } else {
-          console.log('DATA FAILED ' + payload.message)
+        if (payload.identifier === this.identifier) {
+          if (payload.status === 'OK') {
+            console.log('Data %o', payload.payloadReturn)
+            self.render(payload.payloadReturn)
+            self.updateDom(this.animationSpeed)
+          } else {
+            console.log('DATA FAILED ' + payload.message)
+          }
         }
         break
     }

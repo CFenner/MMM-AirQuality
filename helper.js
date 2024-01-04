@@ -13,11 +13,10 @@ module.exports = {
   start: function () {
     console.log('AirQuality helper started ...')
   },
-  loadData: async function (config) {
+  loadData: async function (payload) {
     const self = this
-    self.config = config
-    const url = `https://${self.config.apiBase}${self.config.dataEndpoint}${self.config.location}/?token=${this.config.token}`
-    console.log(`AirQuality loaded: ${url}`)
+    const url = `https://${payload.config.apiBase}${payload.config.dataEndpoint}${payload.config.location}/?token=${payload.config.token}`
+    console.log(`AirQuality-Fetcher: ${url}`)
 
     const result = await fetch(url)
       .then(response => response.json())
@@ -25,11 +24,13 @@ module.exports = {
     self.sendSocketNotification(self.notifications.DATA_RESPONSE, {
       payloadReturn: result,
       status: 'OK',
+      identifier: payload.identifier,
     })
   },
   socketNotificationReceived: function (notification, payload) {
     switch (notification) {
       case this.notifications.DATA:
+        console.log(`AirQuality-Fetcher: Loading data of ${payload.config.location} for module ${payload.identifier}`)
         this.loadData(payload)
         break
     }
