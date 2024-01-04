@@ -105,7 +105,7 @@ Module.register('MMM-AirQuality', {
     }
 
     if (!this.loaded) {
-      wrapper.innerHTML = 'Loading air quality index ...'
+      wrapper.innerHTML = this.translate('LOADING')
       wrapper.className = 'dimmed light small'
       return wrapper
     }
