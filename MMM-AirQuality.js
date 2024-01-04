@@ -81,11 +81,15 @@ Module.register('MMM-AirQuality', {
   // Override getHeader method.
   getHeader: function () {
     let header = ''
-    if (!this.loaded) {
-      return this.translate('HEADER')
+    if (this.data.header !== '') {
+      if (this.data.header === 'HEADER' || this.data.header === null) {
+        header += this.translate('HEADER')
+      } else {
+        header += this.data.header
+      }
     }
-    if (this.data.header) { header += this.data.header }
-    if (this.config.appendLocationNameToHeader) {
+
+    if (this.loaded && this.config.appendLocationNameToHeader) {
       if (header !== '') {
         header += ' '
       }
