@@ -45,14 +45,6 @@ Module.register('MMM-AirQuality', {
       self.sendSocketNotification(self.notifications.DATA, { identifier: self.identifier, config: self.config })
     }, this.config.updateInterval * 60 * 1000 + this.config.initialDelay * 1000)
   },
-  render: function (response) {
-    const data = response.data
-    this.data.value = data.aqi
-    this.data.city = data.city.name
-    this.loaded = true
-    this.data.impact = this.getImpact(data.aqi)
-    this.data.color = this.getColor(this.data.impact)
-  },
   getImpact: function (aqi) {
     if (aqi < 51) return 'GOOD'
     if (aqi < 101) return 'MODERATE'
@@ -62,19 +54,8 @@ Module.register('MMM-AirQuality', {
     if (aqi > 300) return 'HAZARDOUS'
     return 'UNKNOWN'
   },
-  getColor: function (impact) {
-    return this.colors[impact]
-  },
-  html: {
-    icon: '<i class="fa-solid fa-smog"></i>',
-    city: '<div class="xsmall">{0}</div>',
-    quality: '<div style="color: {0}">{1} {2}{3}</div>',
-  },
   getScripts: function () {
-    return [
-      '//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js',
-      'String.format.js',
-    ]
+    return ['//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js']
   },
   getStyles: function () {
     return ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css']
@@ -99,32 +80,55 @@ Module.register('MMM-AirQuality', {
     return header
   },
   // Override dom generator.
-  getDom: function () {
-    const wrapper = document.createElement('div')
-    if (this.config.token === '') {
-      wrapper.innerHTML = 'Please set the AQICN token for module: ' + this.name + ". You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>."
-      wrapper.className = 'dimmed light small'
-      return wrapper
-    }
-    if (this.config.location === '') {
-      wrapper.innerHTML = 'Please set the air quality index <i>location</i> in the config for module: ' + this.name + '.'
-      wrapper.className = 'dimmed light small'
-      return wrapper
-    }
+  // getDom: function () {
+  //   const wrapper = document.createElement('div')
+  //   if (this.config.token === '') {
+  //     wrapper.innerHTML = 'Please set the AQICN token for module: ' + this.name + ". You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>."
+  //     wrapper.className = 'dimmed light small'
+  //     return wrapper
+  //   }
+  //   if (this.config.location === '') {
+  //     wrapper.innerHTML = 'Please set the air quality index <i>location</i> in the config for module: ' + this.name + '.'
+  //     wrapper.className = 'dimmed light small'
+  //     return wrapper
+  //   }
 
-    if (!this.loaded) {
-      wrapper.innerHTML = this.translate('LOADING')
-      wrapper.className = 'dimmed light small'
-      return wrapper
+  //   if (!this.loaded) {
+  //     wrapper.innerHTML = this.translate('LOADING')
+  //     wrapper.className = 'dimmed light small'
+  //     return wrapper
+  //   }
+  //   wrapper.innerHTML =
+  //     this.html.quality.format(
+  //       this.data.color,
+  //       this.html.icon,
+  //       this.translate(this.data.impact),
+  //       (this.config.showIndex ? ' (' + this.data.value + ')' : '')) +
+  //     (this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '')
+  //   return wrapper
+  // },
+  // getTemplate: function () {
+  //   return 'airquality.njk'
+  // },
+  updateData: function (response) {
+    this.loaded = true
+    this.data.city = response.data.city.name
+    this.data.value = response.data.aqi
+    this.data.impact = this.getImpact(response.data.aqi)
+    this.data.color = this.colors[this.data.impact]
+  },
+  getTemplateData: function () {
+    return {
+      loaded: this.loaded,
+      city: this.data.city,
+      index: this.data.value,
+      impact: this.data.impact,
+      color: this.data.color,
+      showLocation: this.config.showLocation,
+      showIndex: this.config.showIndex,
+      labelLoading: this.translate('LOADING'),
+      message: '',
     }
-    wrapper.innerHTML =
-      this.html.quality.format(
-        this.data.color,
-        this.html.icon,
-        this.translate(this.data.impact),
-        (this.config.showIndex ? ' (' + this.data.value + ')' : '')) +
-      (this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '')
-    return wrapper
   },
   getTranslations: function () {
     return {
@@ -140,7 +144,7 @@ Module.register('MMM-AirQuality', {
         if (payload.identifier === this.identifier) {
           if (payload.status === 'OK') {
             console.log('Data %o', payload.payloadReturn)
-            self.render(payload.payloadReturn)
+            self.updateData(payload.payloadReturn)
             self.updateDom(this.animationSpeed)
           } else {
             console.log('DATA FAILED ' + payload.message)
