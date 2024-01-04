@@ -1,0 +1,9 @@
+{
+  "HEADER": "Luftqualität",
+  "GOOD": "gut",
+  "MODERATE": "moderat",
+  "UNHEALTHY_FOR_SENSITIVE_GROUPS": "ungesund für gefährdete Gruppen",
+  "UNHEALTHY": "ungesund",
+  "HAZARDOUS": "gefährlich",
+  "UNKNOWN": "unbekannt"
+}

@@ -23,6 +23,14 @@ Module.register('MMM-AirQuality', {
     DATA: 'AIR_QUALITY_DATA',
     DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
   },
+  colors: {
+    GOOD: '#009966',
+    MODERATE: '#ffde33',
+    UNHEALTHY_FOR_SENSITIVE_GROUPS: '#ff9933',
+    UNHEALTHY: '#cc0033',
+    HAZARDOUS: '#7e0023',
+    UNKNOWN: '#333333',
+  },
   start: function () {
     const self = this
     Log.info(`Starting module: ${this.name}`)
@@ -42,23 +50,19 @@ Module.register('MMM-AirQuality', {
     this.data.value = data.aqi
     this.data.city = data.city.name
     this.loaded = true
-
-    if (data.aqi < 51) {
-      this.data.color = '#009966'
-      this.data.impact = 'Good'
-    } else if (data.aqi < 101) {
-      this.data.color = '#ffde33'
-      this.data.impact = 'Moderate'
-    } else if (data.aqi < 151) {
-      this.data.color = '#ff9933'
-      this.data.impact = 'Unhealty for Sensitive Groups'
-    } else if (data.aqi < 201) {
-      this.data.color = '#cc0033'
-      this.data.impact = 'Unhealthy'
-    } else if (data.aqi < 301) {
-      this.data.color = '#7e0023'
-      this.data.impact = 'Hazardous'
-    }
+    this.data.impact = this.getImpact(data.aqi)
+    this.data.color = this.getColor(this.data.impact)
+  },
+  getImpact: function (aqi) {
+    if (aqi < 51) return 'GOOD'
+    if (aqi < 101) return 'MODERATE'
+    if (aqi < 151) return 'UNHEALTHY_FOR_SENSITIVE_GROUPS'
+    if (aqi < 201) return 'UNHEALTHY'
+    if (aqi < 301) return 'HAZARDOUS'
+    return 'UNKNOWN'
+  },
+  getColor: function (impact) {
+    return this.colors[impact]
   },
   html: {
     icon: '<i class="fa-solid fa-smog"></i>',
@@ -77,8 +81,15 @@ Module.register('MMM-AirQuality', {
   // Override getHeader method.
   getHeader: function () {
     let header = ''
-    if (this.data.header) { header += this.data.header }
-    if (this.config.appendLocationNameToHeader) {
+    if (this.data.header !== '') {
+      if (this.data.header === undefined) {
+        header += this.translate('HEADER')
+      } else {
+        header += this.data.header
+      }
+    }
+
+    if (this.loaded && this.config.appendLocationNameToHeader) {
       if (header !== '') {
         header += ' '
       }
@@ -101,7 +112,7 @@ Module.register('MMM-AirQuality', {
     }
 
     if (!this.loaded) {
-      wrapper.innerHTML = 'Loading air quality index ...'
+      wrapper.innerHTML = this.translate('LOADING')
       wrapper.className = 'dimmed light small'
       return wrapper
     }
@@ -109,10 +120,16 @@ Module.register('MMM-AirQuality', {
       this.html.quality.format(
         this.data.color,
         this.html.icon,
-        this.data.impact,
+        this.translate(this.data.impact),
         (this.config.showIndex ? ' (' + this.data.value + ')' : '')) +
       (this.config.showLocation && !this.config.appendLocationNameToHeader ? this.html.city.format(this.data.city) : '')
     return wrapper
+  },
+  getTranslations: function () {
+    return {
+      en: 'l10n/en.json', // fallback language
+      de: 'l10n/de.json',
+    }
   },
   socketNotificationReceived: function (notification, payload) {
     const self = this
