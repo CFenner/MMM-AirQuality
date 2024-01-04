@@ -82,7 +82,7 @@ Module.register('MMM-AirQuality', {
   getHeader: function () {
     let header = ''
     if (this.data.header !== '') {
-      if (this.data.header === 'HEADER' || this.data.header === null) {
+      if (this.data.header === 'HEADER' || this.data.header === undefined) {
         header += this.translate('HEADER')
       } else {
         header += this.data.header
