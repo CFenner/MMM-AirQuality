@@ -28,6 +28,7 @@ Module.register('MMM-AirQuality', {
     MODERATE: '#ffde33',
     UNHEALTHY_FOR_SENSITIVE_GROUPS: '#ff9933',
     UNHEALTHY: '#cc0033',
+    VERY_UNHEALTHY: '#660099',
     HAZARDOUS: '#7e0023',
     UNKNOWN: '#333333',
   },
@@ -58,7 +59,8 @@ Module.register('MMM-AirQuality', {
     if (aqi < 101) return 'MODERATE'
     if (aqi < 151) return 'UNHEALTHY_FOR_SENSITIVE_GROUPS'
     if (aqi < 201) return 'UNHEALTHY'
-    if (aqi < 301) return 'HAZARDOUS'
+    if (aqi < 301) return 'VERY_UNHEALTHY'
+    if (aqi > 300) return 'HAZARDOUS'
     return 'UNKNOWN'
   },
   getColor: function (impact) {
