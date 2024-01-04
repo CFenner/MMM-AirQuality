@@ -1,6 +1,6 @@
 {
     "name": "airquality",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "A module for the MagicMirror² to display a location's air quality index.",
     "main": "MMM-AirQuality.js",
     "homepage": "https://github.com/CFenner/MMM-AirQuality#readme",
