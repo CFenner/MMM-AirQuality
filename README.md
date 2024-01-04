@@ -40,10 +40,10 @@ Add the module configuration to your `config.js` file.
 ```js
 {
   module: 'MMM-AirQuality',
-  position: 'top_center', // you may choose any location
+  position: 'top_center',
   config: {
-    token: '' // add your token here
-    location: 'beijing' // the location to check the index for
+    token: 'ADD_YOUR_TOKEN_HERE',
+    location: 'germany/hamburg/sternschanze/' // the location to check the index for
   }
 },
 ```
