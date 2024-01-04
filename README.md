@@ -11,9 +11,9 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ## Preview
 
-![preview](.github/preview1.png)
-
-![preview](.github/preview2.png)
+![preview](.github/preview-good.png)
+![preview](.github/preview-unhealthy.png)
+![preview](.github/preview-very-unhealthy.png)
 
 ## Usage
 
