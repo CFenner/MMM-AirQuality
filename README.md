@@ -37,10 +37,9 @@ Add the module configuration to your `config.js` file.
 {
   module: 'MMM-AirQuality',
   position: 'top_center', // you may choose any location
-  header: 'HEADER', //choose a header if you like
   config: {
-    location: 'beijing' // the location to check the index for
     token: '' // add your token here
+    location: 'beijing' // the location to check the index for
   }
 },
 ```
