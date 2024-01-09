@@ -88,6 +88,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://www.justin-c.com"><img src="https://avatars.githubusercontent.com/u/1727656?v=4?s=100" width="100px;" alt="Justin Cherniak"/><br /><sub><b>Justin Cherniak</b></sub></a><br /><a href="https://github.com/CFenner/MMM-AirQuality/commits?author=jcherniak" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://bogminic.com"><img src="https://avatars.githubusercontent.com/u/10672395?v=4?s=100" width="100px;" alt="Bogdan Mihai Nicolae"/><br /><sub><b>Bogdan Mihai Nicolae</b></sub></a><br /><a href="https://github.com/CFenner/MMM-AirQuality/commits?author=bogminic" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
