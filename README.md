@@ -58,6 +58,8 @@ Determine the station you want to display. Select a station on the [map](https:/
 
 You may also get the data for specific longitude and latitude. Set the `location` to `geo::lat;:lng/` and replace `lat` and `lng` with your values.
 
+If your station is affiliated with a third-party air sensor network, such as the uRad Monitor air quality sensor network, you are required to specify the station identifier (e.g., A129586) to set `location`. Please verify data retrieval by visiting `https://api.waqi.info/feed/<provide station Id>/?token=<provide your token>`.
+
 You may want to set the following options in the config section as well:
 
 | Option |  Description | Default | Required |
