@@ -15,6 +15,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "bogminic",
+      "name": "Bogdan Mihai Nicolae",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10672395?v=4",
+      "profile": "https://bogminic.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
