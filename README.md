@@ -54,11 +54,22 @@ To use the WAQI API you need to [request a token](https://aqicn.org/data-platfor
 
 ### Location
 
-Determine the station you want to display. Select a station on the [map](https://aqicn.org/here/) and copy the location part from the URL. For example `http://aqicn.org/city/netherland/utrecht/griftpark/` would be `netherland/utrecht/griftpark/`.
+Determine the station you want to display by selecting a station on the [map](https://aqicn.org/here/).
 
-You may also get the data for specific longitude and latitude. Set the `location` to `geo::lat;:lng/` and replace `lat` and `lng` with your values.
+#### Using Station Names
 
-If your station is affiliated with a third-party air sensor network, such as the uRad Monitor air quality sensor network, you are required to specify the station identifier (e.g., A129586) to set `location`. Please verify data retrieval by visiting `https://api.waqi.info/feed/<provide station Id>/?token=<provide your token>`.
+If the selected station is a named station, e.g. `http://aqicn.org/city/netherland/utrecht/griftpark/` use the name from the URL in your `location` variable. For the given example this would be `netherland/utrecht/griftpark/`.
+
+#### Third-Party Sensors
+
+If your station is affiliated with a third-party air sensor network, such as the *uRad Monitor air quality sensor network*, you are required to specify the station identifier (e.g., A129586) in your `location` variable. For the station `https://aqicn.org/station/@63628/` this would be `A63628`, so just replace the `@` with an `A`.
+Please verify data retrieval by visiting `https://api.waqi.info/feed/<provide station Id>/?token=<provide your token>`.
+
+#### Using GPS Coordinates
+
+You may also get the data for specific longitude and latitude. Set the `location` to `geo:lat;lng/` and replace `lat` and `lng` with your values.
+
+### Further Options
 
 You may want to set the following options in the config section as well:
 
