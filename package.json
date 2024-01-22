@@ -20,7 +20,7 @@
     "license": "MIT",
     "scripts": {
         "validate": "npm run validate:js && npm run validate:md",
-        "validate:js": "eslint **/*.js",
+        "validate:js": "eslint *.js",
         "validate:md": "node_modules/.bin/markdownlint *.md",
         "fix:js": "eslint **/*.js --fix"
     },
