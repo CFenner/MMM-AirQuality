@@ -20,13 +20,14 @@
     "license": "MIT",
     "scripts": {
         "validate": "npm run validate:js && npm run validate:md",
-        "validate:js": "eslint **/*.js",
-        "validate:md": "node_modules/.bin/markdownlint *.md",
+        "validate:js": "eslint *.js",
+        "validate:md": "markdownlint *.md",
         "fix:js": "eslint **/*.js --fix"
     },
     "devDependencies": {
         "eslint": "8.56.0",
         "eslint-config-standard": "17.1.0",
-        "markdownlint": "0.33.0"
+        "markdownlint": "0.33.0",
+        "markdownlint-cli": "0.38.0"
     }
 }
