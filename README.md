@@ -30,7 +30,15 @@ You need to install and configure the module for your MagicMirror.
 Clone the module into your modules folder:
 
 ```shell
-cd ~/MagicMirror/modules && git clone https://github.com/CFenner/MMM-AirQuality
+cd ~/MagicMirror/modules
+git clone https://github.com/CFenner/MMM-AirQuality
+```
+
+### Update
+
+```shell
+cd ~/MagicMirror/modules/MMM-AirQuality
+git pull
 ```
 
 ### Configuration
