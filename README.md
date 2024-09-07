@@ -7,7 +7,7 @@
 
 # MMM-AirQuality
 
-A module for the [MagicMirror](https://github.com/MagicMirrorOrg/MagicMirror) to display a location's [*air quality index*](https://en.wikipedia.org/wiki/Air_quality_index) using data from [aqicn.org](http://aqicn.org/here/).
+A module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display a location's [*air quality index*](https://en.wikipedia.org/wiki/Air_quality_index) using data from [aqicn.org](http://aqicn.org/here/).
 
 ## Preview
 
