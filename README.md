@@ -7,7 +7,7 @@
 
 # MMM-AirQuality
 
-A module for the [MagicMirror](https://github.com/MagicMirrorOrg/MagicMirror) to display a location's [*air quality index*](https://en.wikipedia.org/wiki/Air_quality_index) using data from [aqicn.org](http://aqicn.org/here/).
+A module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display a location's [*air quality index*](https://en.wikipedia.org/wiki/Air_quality_index) using data from [aqicn.org](http://aqicn.org/here/).
 
 ## Preview
 
@@ -30,7 +30,15 @@ You need to install and configure the module for your MagicMirror.
 Clone the module into your modules folder:
 
 ```shell
-cd ~/MagicMirror/modules && git clone https://github.com/CFenner/MMM-AirQuality
+cd ~/MagicMirror/modules
+git clone https://github.com/CFenner/MMM-AirQuality
+```
+
+### Update
+
+```shell
+cd ~/MagicMirror/modules/MMM-AirQuality
+git pull
 ```
 
 ### Configuration
@@ -110,3 +118,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Developer commands
+
+- `npm install` - Install devDependencies like ESLint and markdownlint.
+- `npm run lint` - Run linting and formatter checks.
+- `npm run lint:fix` - Fix linting and formatter issues.

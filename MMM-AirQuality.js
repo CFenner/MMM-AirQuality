@@ -31,30 +31,30 @@ Module.register('MMM-AirQuality', {
     HAZARDOUS: '#7e0023',
     UNKNOWN: '#333333',
   },
-  start: function () {
+  start() {
     const self = this
     Log.info(`Starting module: ${this.name}`)
     self.loaded = false
 
     if (this.config.token !== '' && this.config.location !== '') {
-      setTimeout(function () {
+      setTimeout(() => {
         self.sendSocketNotification(self.notifications.DATA, { identifier: self.identifier, config: self.config })
       }, this.config.initialDelay * 1000)
 
       // set auto-update
-      setInterval(function () {
+      setInterval(() => {
         self.sendSocketNotification(self.notifications.DATA, { identifier: self.identifier, config: self.config })
       }, this.config.updateInterval * 60 * 1000 + this.config.initialDelay * 1000)
     }
   },
-  updateData: function (response) {
+  updateData(response) {
     this.loaded = true
     this.data.city = response.data.city.name
     this.data.value = response.data.aqi
     this.data.impact = this.getImpact(response.data.aqi)
     this.data.color = this.colors[this.data.impact]
   },
-  getImpact: function (index) {
+  getImpact(index) {
     if (index < 51) return 'GOOD'
     if (index < 101) return 'MODERATE'
     if (index < 151) return 'UNHEALTHY_FOR_SENSITIVE_GROUPS'
@@ -64,7 +64,7 @@ Module.register('MMM-AirQuality', {
     return 'UNKNOWN'
   },
   // Override getHeader method.
-  getHeader: function () {
+  getHeader() {
     let header = ''
     if (this.data.header !== '') {
       if (this.data.header === undefined) {
@@ -82,10 +82,10 @@ Module.register('MMM-AirQuality', {
     }
     return header
   },
-  getTemplate: function () {
+  getTemplate() {
     return `${this.name}.njk`
   },
-  getTemplateData: function () {
+  getTemplateData() {
     let message = ''
     if (this.config.token === '') {
       message = `Please set a token for ${this.name}!<br>You can acquire one at <a href='https://aqicn.org/data-platform/token/'>https://aqicn.org/data-platform/token/</a>.`
@@ -105,30 +105,30 @@ Module.register('MMM-AirQuality', {
       message,
     }
   },
-  getTranslations: function () {
+  getTranslations() {
     return {
       en: 'l10n/en.json', // fallback language
       de: 'l10n/de.json',
     }
   },
-  getScripts: function () {
+  getScripts() {
     return ['//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.js']
   },
-  getStyles: function () {
+  getStyles() {
     return ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css']
   },
-  socketNotificationReceived: function (notification, payload) {
+  socketNotificationReceived(notification, payload) {
     const self = this
-    Log.debug('received ' + notification)
+    Log.debug(`received ${notification}`)
     switch (notification) {
       case self.notifications.DATA_RESPONSE:
         if (payload.identifier === this.identifier) {
           if (payload.status === 'OK') {
-            console.log('Data %o', payload.payloadReturn)
+            Log.log('Data %o', payload.payloadReturn)
             self.updateData(payload.payloadReturn)
             self.updateDom(this.animationSpeed)
           } else {
-            console.log('DATA FAILED ' + payload.message)
+            Log.log(`DATA FAILED ${payload.message}`)
           }
         }
         break

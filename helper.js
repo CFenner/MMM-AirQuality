@@ -10,10 +10,10 @@ module.exports = {
     DATA: 'AIR_QUALITY_DATA',
     DATA_RESPONSE: 'AIR_QUALITY_DATA_RESPONSE',
   },
-  start: function () {
+  start() {
     console.log('AirQuality helper started ...')
   },
-  loadData: async function (payload) {
+  async loadData(payload) {
     const self = this
     const url = `https://${payload.config.apiBase}${payload.config.dataEndpoint}${payload.config.location}/?token=${payload.config.token}`
     console.log(`AirQuality-Fetcher: ${url}`)
@@ -27,7 +27,7 @@ module.exports = {
       identifier: payload.identifier,
     })
   },
-  socketNotificationReceived: function (notification, payload) {
+  socketNotificationReceived(notification, payload) {
     switch (notification) {
       case this.notifications.DATA:
         console.log(`AirQuality-Fetcher: Loading data of ${payload.config.location} for module ${payload.identifier}`)
